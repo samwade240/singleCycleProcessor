@@ -1,0 +1,114 @@
+#! /usr/bin/vvp
+:ivl_version "10.3 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x55fbe4302050 .scope module, "fullAdder_test" "fullAdder_test" 2 1;
+ .timescale 0 0;
+v0x55fbe4351e10_0 .var "A", 0 0;
+v0x55fbe4351ed0_0 .var "B", 0 0;
+v0x55fbe4351fa0_0 .var "C", 0 0;
+v0x55fbe43520a0_0 .net "Ci", 0 0, L_0x55fbe4352890;  1 drivers
+v0x55fbe4352170_0 .net "S", 0 0, L_0x55fbe4352550;  1 drivers
+S_0x55fbe43021d0 .scope module, "DUT" "fullAdder" 2 6, 3 1 0, S_0x55fbe4302050;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A"
+    .port_info 1 /INPUT 1 "B"
+    .port_info 2 /INPUT 1 "C"
+    .port_info 3 /OUTPUT 1 "S"
+    .port_info 4 /OUTPUT 1 "Ci"
+L_0x55fbe4352260/d .functor XOR 1, v0x55fbe4351e10_0, v0x55fbe4351ed0_0, C4<0>, C4<0>;
+L_0x55fbe4352260 .delay 1 (2,2,2) L_0x55fbe4352260/d;
+L_0x55fbe4352440/d .functor AND 1, v0x55fbe4351e10_0, v0x55fbe4351ed0_0, C4<1>, C4<1>;
+L_0x55fbe4352440 .delay 1 (2,2,2) L_0x55fbe4352440/d;
+L_0x55fbe4352550/d .functor XOR 1, L_0x55fbe4352260, v0x55fbe4351fa0_0, C4<0>, C4<0>;
+L_0x55fbe4352550 .delay 1 (2,2,2) L_0x55fbe4352550/d;
+L_0x55fbe4352750/d .functor AND 1, L_0x55fbe4352260, v0x55fbe4351fa0_0, C4<1>, C4<1>;
+L_0x55fbe4352750 .delay 1 (2,2,2) L_0x55fbe4352750/d;
+L_0x55fbe4352890/d .functor OR 1, L_0x55fbe4352750, L_0x55fbe4352440, C4<0>, C4<0>;
+L_0x55fbe4352890 .delay 1 (2,2,2) L_0x55fbe4352890/d;
+v0x55fbe432a310_0 .net "A", 0 0, v0x55fbe4351e10_0;  1 drivers
+v0x55fbe4351800_0 .net "B", 0 0, v0x55fbe4351ed0_0;  1 drivers
+v0x55fbe43518c0_0 .net "C", 0 0, v0x55fbe4351fa0_0;  1 drivers
+v0x55fbe4351960_0 .net "Ci", 0 0, L_0x55fbe4352890;  alias, 1 drivers
+v0x55fbe4351a20_0 .net "S", 0 0, L_0x55fbe4352550;  alias, 1 drivers
+v0x55fbe4351b30_0 .net "a1", 0 0, L_0x55fbe4352440;  1 drivers
+v0x55fbe4351bf0_0 .net "a2", 0 0, L_0x55fbe4352750;  1 drivers
+v0x55fbe4351cb0_0 .net "x1", 0 0, L_0x55fbe4352260;  1 drivers
+    .scope S_0x55fbe4302050;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55fbe4351e10_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55fbe4351ed0_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55fbe4351fa0_0, 0;
+    %delay 9, 0;
+    %vpi_call 2 15 "$display", "input ABC: 000, Output: S and Ci: %d%d", v0x55fbe4352170_0, v0x55fbe43520a0_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55fbe4351e10_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55fbe4351ed0_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55fbe4351fa0_0, 0;
+    %delay 9, 0;
+    %vpi_call 2 21 "$display", "input ABC: 100, Output: S and Ci: %d%d", v0x55fbe4352170_0, v0x55fbe43520a0_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55fbe4351e10_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55fbe4351ed0_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55fbe4351fa0_0, 0;
+    %delay 9, 0;
+    %vpi_call 2 27 "$display", "input ABC: 110, Output: S and Ci: %d%d", v0x55fbe4352170_0, v0x55fbe43520a0_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55fbe4351e10_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55fbe4351ed0_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55fbe4351fa0_0, 0;
+    %delay 9, 0;
+    %vpi_call 2 33 "$display", "input ABC: 101, Output: S and Ci: %d%d", v0x55fbe4352170_0, v0x55fbe43520a0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55fbe4351e10_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55fbe4351ed0_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55fbe4351fa0_0, 0;
+    %delay 9, 0;
+    %vpi_call 2 39 "$display", "input ABC: 010, Output: S and Ci: %d%d", v0x55fbe4352170_0, v0x55fbe43520a0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55fbe4351e10_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55fbe4351ed0_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55fbe4351fa0_0, 0;
+    %delay 9, 0;
+    %vpi_call 2 45 "$display", "input ABC: 011, Output: S and Ci: %d%d", v0x55fbe4352170_0, v0x55fbe43520a0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55fbe4351e10_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v0x55fbe4351ed0_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55fbe4351fa0_0, 0;
+    %delay 9, 0;
+    %vpi_call 2 51 "$display", "input ABC: 001, Output: S and Ci: %d%d", v0x55fbe4352170_0, v0x55fbe43520a0_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55fbe4351e10_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55fbe4351ed0_0, 0;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v0x55fbe4351fa0_0, 0;
+    %delay 9, 0;
+    %vpi_call 2 57 "$display", "input ABC: 111, Output: S and Ci: %d%d", v0x55fbe4352170_0, v0x55fbe43520a0_0 {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "fullAdder-test.v";
+    "fullAdder.v";
